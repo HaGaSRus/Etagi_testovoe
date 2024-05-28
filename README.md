@@ -32,7 +32,7 @@
 
 2. Переход в директорию Etagi_testovoe
 
-```cd Oxygen```
+```cd Etagi_testovoe```
 
 3. Создание виртуального окружения
 
