@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3622b814-bd79-4f07-8ae7-cd6793ea3362" name="Changes" comment="Фильтрация и проверка вывода">
+    <list default="true" id="3622b814-bd79-4f07-8ae7-cd6793ea3362" name="Changes" comment="Группировка и подсчет активных квартир и их последующий вывод в 2 форматах csv и excel">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,13 +84,22 @@
       <option name="project" value="LOCAL" />
       <updated>1716894095778</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Группировка и подсчет активных квартир и их последующий вывод в 2 форматах csv и excel">
+      <option name="closed" value="true" />
+      <created>1716894965738</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716894965738</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создание проекта" />
     <MESSAGE value="Логгирование + чтение файла csv" />
     <MESSAGE value="Фильтрация и проверка вывода" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фильтрация и проверка вывода" />
+    <MESSAGE value="Группировка и подсчет активных квартир и их последующий вывод в 2 форматах csv и excel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Группировка и подсчет активных квартир и их последующий вывод в 2 форматах csv и excel" />
   </component>
 </project>

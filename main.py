@@ -15,7 +15,8 @@ df = pd.read_csv(file_path, sep='\t', skiprows=1, names=[
 logging.info('Преобразование столбца actualized_at в datatime формат')
 df['actualized_at'] = pd.to_datetime(df['actualized_at'], errors='coerce')
 
-df['actualized_at'] = df['actualized_at'].dt.tz_locatize(None)
+df['actualized_at'] = df['actualized_at'].dt.tz_localize(None)
+
 
 # Фильтруем данные датой до 31.12.2023
 logging.info('Фильтрация данных до 31.12.2023')
@@ -46,3 +47,26 @@ pivot_table.to_csv('summary_table.csv', index=False)
 
 logging.info('Сохранение сводной таблицы в XLSX')
 pivot_table.to_excel('summary_table.xlsx', index=False)
+
+# Группировка по месяцам и количеству комнат
+df['month'] = df['actualized_at'].dt.to_period('M')
+monthly_summary = df.groupby(['month', 'room_count']).size().unstack(fill_value=0)
+
+logging.info("Сводные данные за месяц:")
+print(monthly_summary.head())
+
+# Проверяем не пустой ли DataFrame для построения графика
+if monthly_summary.empty:
+    logging.error("Нет данных для построения графика. Пожалуйста, ознакомьтесь с вводимыми данными и этапами обработки")
+else:
+    logging.info("Построение графика")
+    ax = monthly_summary.plot(kind='bar', stacked=True, figsize=(12, 8), colormap='viridis')
+    ax.set_title('Количество активных квартир в месяц, в разбивке по количеству комнат (с 01.07.2023 по 31.12.2023)')
+    ax.set_xlabel('Месяц')
+    ax.set_ylabel('Количество активных квартир')
+    ax.legend(title='Комнат')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig('monthly_summary.png')
+    plt.show()
+
