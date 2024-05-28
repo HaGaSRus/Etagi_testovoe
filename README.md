@@ -12,3 +12,4 @@
 
 * Предобработку, агрегирование, визуализацию данных необходимо осуществить  с помощью Python
 
+![Вариант](https://github.com/HaGaSRus/Etagi_testovoe/assets/107768388/c1f29c7e-aa3a-437a-b2fc-d83911fc791f)
