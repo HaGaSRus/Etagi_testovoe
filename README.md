@@ -46,6 +46,6 @@
 
 ```pip3 install -r requirements.txt```
 
-6. Запуск скрипта для демонстрации возможностей Oxygen
+6. Запуск скрипта 
 
 ```python main.py```
