@@ -25,4 +25,24 @@ df = df[df['actualized_at'] <= '2023-12-31']
 logging.info("Начальные данные:")
 print(df.head())
 
+logging.info('Заполнение данных для каждого дня в рассматриваемом периоде')
+date_range = pd.date_range(start='2023-07-01', end='2023-12-31')
+addresses = df['address_gp'].unique()
 
+# Создание DataFrame для формирования сводной таблицы
+summary_df = pd.DataFrame([(date, address) for date in date_range for address in addresses], columns=['date', 'address'])
+
+logging.info('Объединение таблиц и расчет активных квартир')
+summary_df = summary_df.merge(df[['address_gp', 'actualized_at']], left_on='address', right_on='address_gp', how='left')
+
+# Определяем количество активных квартир на каждый день
+summary_df['active'] = summary_df['actualized_at'] >= summary_df['date']
+
+# Группировка данных по дате и адресу, подсчитываем активные квартиры
+pivot_table = summary_df.groupby(['date', 'address']).agg(active_apartments=('active', 'sum')).reset_index()
+
+logging.info('Сохранение сводной таблицы в CSV')
+pivot_table.to_csv('summary_table.csv', index=False)
+
+logging.info('Сохранение сводной таблицы в XLSX')
+pivot_table.to_excel('summary_table.xlsx', index=False)
